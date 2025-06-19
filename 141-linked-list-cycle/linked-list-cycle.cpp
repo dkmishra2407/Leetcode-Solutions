@@ -14,13 +14,13 @@ public:
             return false;
         }
 
-        unordered_map<ListNode*,int>s;
+        unordered_set<ListNode*>s;
         ListNode* temp = head;
         while(temp != NULL){
             if(s.find(temp) != s.end()){
                 return true;
             }
-            s[temp] = 1;
+            s.insert(temp);
             temp = temp->next;
         }
 
