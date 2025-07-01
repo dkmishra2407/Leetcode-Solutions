@@ -15,21 +15,33 @@ public:
             return NULL;
         }
 
-        if(root == p || root == q){
-            return root;
-        }
+        int curr = root->val;
 
-        TreeNode* left = lowestCommonAncestor(root->left,p,q);
-        TreeNode* right = lowestCommonAncestor(root->right,p,q);
-
-        if(!left){
-            return right;
+        if(curr > p->val && q->val < curr){
+            return lowestCommonAncestor(root->left,p,q);
         }
-        else if(!right){
-            return left;
+        else if(curr < p->val && q->val > curr){
+            return lowestCommonAncestor(root->right,p,q);
         }
         else{
             return root;
         }
+
+        // if(root == p || root == q){
+        //     return root;
+        // }
+
+        // TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        // TreeNode* right = lowestCommonAncestor(root->right,p,q);
+
+        // if(!left){
+        //     return right;
+        // }
+        // else if(!right){
+        //     return left;
+        // }
+        // else{
+        //     return root;
+        // }
     }
 };
